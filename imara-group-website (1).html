@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Imara Group LLC - Columbia-based management and brand strategy firm that partners with entrepreneurs and emerging enterprises to build scalable, enduring companies.">
+    <title>The Imara Group LLC – Business Management & Brand Strategy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --ivory: #F9F7F4;
+            --soft-blush: #E9C9C3;
+            --metallic-gold: #C7A469;
+            --charcoal: #2F2F2F;
+            --warm-taupe: #B8A89F;
+            --pearl-white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--charcoal);
+            line-height: 1.6;
+            background-color: var(--ivory);
+        }
+        
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--pearl-white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--metallic-gold);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #1a1a1a 100%);
+            color: var(--pearl-white);
+            padding: 8rem 2rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(199, 164, 105, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--pearl-white);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--ivory);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--soft-blush);
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--metallic-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(199, 164, 105, 0.3);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--pearl-white);
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            line-height: 1.8;
+        }
+        
+        .about-features {
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--pearl-white) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--metallic-gold);
+        }
+        
+        .about-features h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+        
+        .about-features ul {
+            list-style: none;
+        }
+        
+        .about-features li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--charcoal);
+        }
+        
+        .about-features li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--metallic-gold);
+            font-weight: bold;
+        }
+        
+        /* Mission Section */
+        .mission {
+            background: linear-gradient(135deg, var(--soft-blush) 0%, var(--ivory) 100%);
+            text-align: center;
+        }
+        
+        .mission h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+        
+        .mission p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--charcoal);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--pearl-white);
+        }
+        
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--charcoal);
+        }
+        
+        .services-subtitle {
+            text-align: center;
+            color: var(--warm-taupe);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--ivory);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid var(--metallic-gold);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .service-card p {
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+        
+        /* Products Section */
+        .products {
+            background-color: var(--ivory);
+        }
+        
+        .products h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--charcoal);
+        }
+        
+        .products-intro {
+            text-align: center;
+            color: var(--warm-taupe);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--pearl-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--ivory);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .product-card.flagship {
+            border: 3px solid var(--metallic-gold);
+            background: linear-gradient(135deg, #FFFCF7 0%, var(--pearl-white) 100%);
+            position: relative;
+        }
+        
+        .flagship-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--metallic-gold);
+            color: var(--pearl-white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+        
+        .product-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .product-card .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+        
+        .product-card .description {
+            color: var(--warm-taupe);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .product-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--charcoal);
+            color: var(--pearl-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-button:hover {
+            background-color: var(--metallic-gold);
+            color: var(--charcoal);
+        }
+        
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--soft-blush);
+            color: var(--charcoal);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--pearl-white);
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--charcoal);
+        }
+        
+        .contact-intro {
+            text-align: center;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--pearl-white) 100%);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid var(--soft-blush);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--ivory);
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background-color: var(--pearl-white);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--metallic-gold);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--charcoal) 0%, #1a1a1a 100%);
+            color: var(--ivory);
+            padding: 3rem 2rem 2rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 50%, rgba(199, 164, 105, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-info h3 {
+            color: var(--metallic-gold);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-info p {
+            margin-bottom: 0.5rem;
+            color: var(--ivory);
+        }
+        
+        .footer-contact h3 {
+            color: var(--metallic-gold);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 0.5rem;
+            color: var(--ivory);
+        }
+        
+        .footer-contact a {
+            color: var(--ivory);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-contact a:hover {
+            color: var(--metallic-gold);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(199, 164, 105, 0.2);
+            text-align: center;
+            color: var(--warm-taupe);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">THE IMARA GROUP</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Business Management & Brand Strategy</h1>
+                <p>Columbia-based management and brand strategy firm that partners with entrepreneurs and emerging enterprises to build scalable, enduring companies. We combine strategic structure with creative insight—delivering systems, frameworks, and operational models that strengthen performance, efficiency, and long-term growth.</p>
+                <a href="#contact" class="cta-button">Start a Conversation</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2>About The Imara Group LLC</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>The Imara Group LLC is a Columbia-based management and brand strategy firm that partners with entrepreneurs and emerging enterprises to build scalable, enduring companies. We combine strategic structure with creative insight—delivering systems, frameworks, and operational models that strengthen performance, efficiency, and long-term growth.</p>
+                    
+                    <p>Our approach is rooted in disciplined execution and strategic partnerships. We work with ambitious leaders who are committed to moving beyond survival into sustainable success—creating measurable impact through structured growth systems, data-driven marketing frameworks, and innovative operational solutions.</p>
+                    
+                    <p>Through our flagship innovation FrontDeskAI and planned ventures like EmpowerHer CEO, we demonstrate our commitment to building technology and programs that solve real business challenges while creating lasting value for entrepreneurs and their organizations.</p>
+                </div>
+                
+                <div class="about-features">
+                    <h3>Brand Personality</h3>
+                    <ul>
+                        <li>Strategic & Vision-Driven</li>
+                        <li>Grounded & Trustworthy</li>
+                        <li>Elegant & Modern</li>
+                        <li>Empowered & Innovative</li>
+                        <li>Results-Oriented</li>
+                        <li>Excellence-Focused</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="mission">
+            <h2>Our Mission</h2>
+            <p>Our mission is to equip ambitious leaders with clarity, structure, and strategy. We empower growing brands to move beyond survival into sustainable success—creating measurable impact through disciplined execution, strategic partnerships, and a culture of innovation. Structure creates freedom, and our strategies help leaders achieve sustainable growth while maintaining integrity, innovation, and excellence.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <h2>Services</h2>
+            <p class="services-subtitle">Strategic solutions designed to strengthen organizational performance and competitive advantage</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Strategic Planning & Process Optimization</h3>
+                    <p>We work with founders and leadership teams to develop clear, actionable strategies that align organizational vision with practical execution. Our process optimization frameworks eliminate inefficiencies and create scalable operational models.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Brand Architecture & Market Positioning</h3>
+                    <p>Building cohesive brand identities and strategic positioning that resonates with target markets. We develop comprehensive brand frameworks that differentiate your organization and create lasting competitive advantages.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Data-Driven Marketing Frameworks</h3>
+                    <p>Implementing marketing systems grounded in analytics and measurable outcomes. Our frameworks connect marketing activities directly to business objectives, ensuring every initiative contributes to growth and profitability.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <h2>Ventures & Innovation</h2>
+            <p class="products-intro">Building technology and programs that solve real business challenges while creating lasting value for entrepreneurs and their organizations.</p>
+            
+            <div class="products-grid">
+                <div class="product-card flagship">
+                    <span class="flagship-badge">Flagship</span>
+                    <h3>FrontDeskAI</h3>
+                    <p class="tagline">AI No-Show Recovery System for Healthcare Practices</p>
+                    <p class="description">Our flagship AI innovation that revolutionizes patient engagement and reduces appointment no-shows through intelligent, automated communication. Purpose-built for healthcare practices seeking operational efficiency and improved revenue capture.</p>
+                    <a href="https://frontdeskai.com" target="_blank" class="product-button">Visit FrontDeskAI</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>EmpowerHer CEO</h3>
+                    <p class="tagline">Leadership Development for Women Entrepreneurs</p>
+                    <p class="description">Comprehensive leadership development and business strategy programs designed specifically for women building and scaling successful enterprises. Launching soon as part of our commitment to fostering inclusive entrepreneurship.</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                
+                <div class="product-card">
+                    <h3>Future Ventures</h3>
+                    <p class="tagline">Innovation Pipeline</p>
+                    <p class="description">Additional strategic initiatives and technology solutions currently in development. Each venture is designed to deliver measurable business impact and sustainable growth outcomes for entrepreneurs and emerging enterprises.</p>
+                    <span class="coming-soon-badge">In Development</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p class="contact-intro">For partnership inquiries, service consultations, or strategic discussions, reach out to The Imara Group LLC.</p>
+            
+            <form class="contact-form" action="https://formsubmit.co/admin@theimaragroupllc.com" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="organization">Organization</label>
+                    <input type="text" id="organization" name="organization" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <input type="hidden" name="_subject" value="New inquiry from Imara Group website">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>The Imara Group LLC</h3>
+                <p>Columbia-based management and brand strategy firm partnering with entrepreneurs and emerging enterprises to build scalable, enduring companies.</p>
+                <p style="margin-top: 1.5rem; font-style: italic;">Strategic · Grounded · Elegant · Modern · Empowered · Trustworthy · Vision-Driven</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Information</h3>
+                <p>9600 Two Notch Rd, Suite 5<br>Columbia, SC 29223</p>
+                <p style="margin-top: 1rem;">
+                    Phone: <a href="tel:8338734800">833-873-4800</a><br>
+                    Email: <a href="mailto:admin@theimaragroupllc.com">admin@theimaragroupllc.com</a>
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 The Imara Group LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
