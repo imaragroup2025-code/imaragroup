@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Imara Group LLC — Governance Architecture | Decision Systems | Operational Infrastructure. Columbia, South Carolina.">
+    <title>The Imara Group LLC — Governance Architecture & Decision Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-primary: #0A1931;
+            --navy-secondary: #1B2E4B;
+            --navy-light: #243d63;
+            --gold-primary: #C9A84C;
+            --gold-light: #E8D5A3;
+            --gold-dark: #9E7E32;
+            --white: #FFFFFF;
+            --off-white: #F8F6F2;
+            --gray-light: #F0EDE8;
+            --gray-mid: #9A9A9A;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-accent: 'Montserrat', sans-serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--navy-primary);
+            line-height: 1.7;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            background-color: var(--navy-primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wordmark {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .wordmark-primary {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .wordmark-rule {
+            height: 1px;
+            background: var(--gold-primary);
+            margin: 4px 0;
+            width: 100%;
+        }
+
+        .wordmark-sub {
+            font-family: var(--font-accent);
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-family: var(--font-accent);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background-color: var(--navy-primary);
+            background-image:
+                radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, rgba(27, 46, 75, 0.8) 0%, transparent 50%);
+            color: var(--white);
+            padding: 9rem 2rem 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: 'IMARA';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--font-heading);
+            font-size: 22rem;
+            font-weight: 700;
+            color: rgba(201, 168, 76, 0.03);
+            letter-spacing: -10px;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-accent);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold-primary);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--white);
+            max-width: 750px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .hero-body {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background-color: var(--gold-primary);
+            color: var(--navy-primary);
+            text-decoration: none;
+            font-family: var(--font-accent);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--gold-primary);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background-color: transparent;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-family: var(--font-accent);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        /* ─── PILLARS BAR ─── */
+        .pillars {
+            background-color: var(--gold-primary);
+            padding: 1.25rem 2rem;
+        }
+
+        .pillars-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .pillar-item {
+            font-family: var(--font-accent);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--navy-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pillar-item::before {
+            content: '◆';
+            font-size: 0.4rem;
+        }
+
+        /* ─── SECTION BASE ─── */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--font-accent);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--gold-primary);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--navy-primary);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ─── ABOUT ─── */
+        .about {
+            background-color: var(--off-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-principles {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .principle-item {
+            padding: 1.75rem 0;
+            border-bottom: 1px solid rgba(10, 25, 49, 0.1);
+        }
+
+        .principle-item:first-child {
+            border-top: 1px solid rgba(10, 25, 49, 0.1);
+        }
+
+        .principle-number {
+            font-family: var(--font-accent);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .principle-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--navy-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .principle-desc {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        /* ─── MISSION ─── */
+        .mission {
+            background-color: var(--navy-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 90% 50%, rgba(201, 168, 76, 0.07), transparent 60%);
+            pointer-events: none;
+        }
+
+        .mission .section-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .mission .section-label {
+            color: var(--gold-primary);
+        }
+
+        .mission .section-title {
+            color: var(--white);
+        }
+
+        .mission-statement {
+            font-family: var(--font-heading);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            border-left: 3px solid var(--gold-primary);
+            padding-left: 2rem;
+            font-style: italic;
+        }
+
+        /* ─── SERVICES ─── */
+        .services {
+            background-color: var(--white);
+        }
+
+        .services-header {
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background-color: var(--gray-light);
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 3rem 2.5rem;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            background-color: var(--navy-primary);
+        }
+
+        .service-card:hover .service-title,
+        .service-card:hover .service-body {
+            color: var(--white);
+        }
+
+        .service-card:hover .service-icon {
+            color: var(--gold-primary);
+            border-color: var(--gold-primary);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--navy-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy-primary);
+            transition: all 0.3s ease;
+        }
+
+        .service-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy-primary);
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .service-body {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        /* ─── DIVISIONS ─── */
+        .divisions {
+            background-color: var(--off-white);
+        }
+
+        .divisions-header {
+            margin-bottom: 4rem;
+        }
+
+        .divisions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .division-card {
+            background-color: var(--white);
+            border-top: 3px solid var(--gold-primary);
+            padding: 3rem;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .division-card:hover {
+            box-shadow: 0 20px 60px rgba(10, 25, 49, 0.1);
+        }
+
+        .division-tag {
+            font-family: var(--font-accent);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .division-name {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy-primary);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .division-body {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .division-focus {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .focus-item {
+            font-family: var(--font-accent);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--navy-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .focus-item::before {
+            content: '—';
+            color: var(--gold-primary);
+        }
+
+        /* ─── CONTACT ─── */
+        .contact {
+            background-color: var(--navy-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(201, 168, 76, 0.05), transparent 50%);
+            pointer-events: none;
+        }
+
+        .contact .section-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-info .section-title {
+            color: var(--white);
+        }
+
+        .contact-info .section-label {
+            color: var(--gold-primary);
+        }
+
+        .contact-info p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .contact-detail-label {
+            font-family: var(--font-accent);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+        }
+
+        .contact-detail-value {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .contact-detail-value a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail-value a:hover {
+            color: var(--gold-primary);
+        }
+
+        /* ─── FORM ─── */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-family: var(--font-accent);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.9rem 1rem;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            outline: none;
+            border-radius: 0;
+            -webkit-appearance: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.25);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--gold-primary);
+            background-color: rgba(255,255,255,0.08);
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-group select option {
+            background-color: var(--navy-primary);
+            color: var(--white);
+        }
+
+        .form-submit {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background-color: var(--gold-primary);
+            color: var(--navy-primary);
+            font-family: var(--font-accent);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid var(--gold-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .form-submit:hover {
+            background-color: transparent;
+            color: var(--gold-primary);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background-color: #060f1e;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-wordmark {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.25);
+            font-family: var(--font-accent);
+            letter-spacing: 1px;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-accent);
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .about-grid,
+            .divisions-grid,
+            .mission .section-inner,
+            .contact .section-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .pillars-inner {
+                gap: 1.5rem;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+        .hero h1 { animation: fadeUp 0.6s 0.15s ease both; }
+        .hero-body { animation: fadeUp 0.6s 0.3s ease both; }
+        .hero-actions { animation: fadeUp 0.6s 0.45s ease both; }
+    </style>
+</head>
+<body>
+
+    <!-- ─── HEADER ─── -->
+    <header>
+        <nav>
+            <a href="#home" class="wordmark">
+                <span class="wordmark-primary">The Imara Group LLC</span>
+                <div class="wordmark-rule"></div>
+                <span class="wordmark-sub">Columbia, SC &nbsp;·&nbsp; Strategic Direction & Decision Consulting</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#divisions">Divisions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ─── HERO ─── -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Strategic Direction & Decision Consulting</div>
+            <h1>We Build the Structure<br>That <em>Executes</em> Your Vision</h1>
+            <p class="hero-body">
+                The Imara Group LLC delivers governance architecture, operational infrastructure, and decision systems for founders and emerging enterprises. We do not sell vision. We build what enforces it.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Request a Consultation</a>
+                <a href="#divisions" class="btn-secondary">Our Divisions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PILLARS BAR ─── -->
+    <div class="pillars">
+        <div class="pillars-inner">
+            <span class="pillar-item">Governance Architecture</span>
+            <span class="pillar-item">Decision Systems</span>
+            <span class="pillar-item">Operational Infrastructure</span>
+            <span class="pillar-item">Execution Enforcement</span>
+        </div>
+    </div>
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about" class="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-label">About</div>
+                    <h2 class="section-title">The Imara Group LLC</h2>
+                    <p>
+                        The Imara Group LLC is a Columbia-based strategic direction and decision consulting firm providing governance architecture, operational infrastructure, and decision systems for founders and emerging enterprises.
+                    </p>
+                    <p>
+                        We specialize in building the structural foundation that organizations need to operate with clarity, enforce accountability, and scale with precision. Our work spans organizational governance, decision authority frameworks, and execution infrastructure — delivered through our specialized divisions.
+                    </p>
+                    <p>
+                        Every engagement is built on observable outcomes, enforceable systems, and sustainable operational performance.
+                    </p>
+                </div>
+
+                <div class="about-principles">
+                    <div class="principle-item">
+                        <div class="principle-number">01</div>
+                        <div class="principle-title">Structure Precedes Growth</div>
+                        <div class="principle-desc">Operational infrastructure must be established before scale is pursued. Growth without structure produces accelerated dysfunction.</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-number">02</div>
+                        <div class="principle-title">Authority Must Be Defined</div>
+                        <div class="principle-desc">When decision authority is undefined, execution defaults to assumption. Assumption is not a system.</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-number">03</div>
+                        <div class="principle-title">Accountability Is Enforced</div>
+                        <div class="principle-desc">Unenforced standards are not policies. They are suggestions. We build systems that distinguish between the two.</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-number">04</div>
+                        <div class="principle-title">Outcomes Are Observable</div>
+                        <div class="principle-desc">Every deliverable produces a measurable, third-party verifiable result. We do not deliver recommendations. We deliver systems.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── MISSION ─── -->
+    <section id="mission" class="mission">
+        <div class="section-inner">
+            <div>
+                <div class="section-label">Mission</div>
+                <h2 class="section-title">Why We Exist</h2>
+            </div>
+            <blockquote class="mission-statement">
+                The Imara Group LLC is a Columbia-based strategic direction and decision consulting firm providing governance architecture, operational infrastructure, and decision systems for founders and emerging enterprises. We specialize in building the structural foundation organizations need to operate with clarity, enforce accountability, and scale with precision. Every engagement is built on observable outcomes, enforceable systems, and sustainable operational performance. We do not sell vision. We build the structure that executes it.
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ─── SERVICES ─── -->
+    <section id="services" class="services">
+        <div class="section-inner">
+            <div class="services-header">
+                <div class="section-label">Services</div>
+                <h2 class="section-title">What We Deliver</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">I</div>
+                    <h3 class="service-title">Governance Architecture</h3>
+                    <p class="service-body">We design and implement organizational governance frameworks that define authority, enforce accountability, and create operational clarity. Engagements produce enforceable systems — not recommendations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">II</div>
+                    <h3 class="service-title">Decision Infrastructure</h3>
+                    <p class="service-body">We build the decision architecture that organizations need to move from reactive management to structured execution. Every framework is designed for scalability and third-party enforceability.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">III</div>
+                    <h3 class="service-title">Operational Systems Development</h3>
+                    <p class="service-body">We develop operational models that eliminate structural inefficiencies and create sustainable performance standards across all organizational levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── DIVISIONS ─── -->
+    <section id="divisions" class="divisions">
+        <div class="section-inner">
+            <div class="divisions-header">
+                <div class="section-label">Our Divisions</div>
+                <h2 class="section-title">Specialized Delivery Arms</h2>
+            </div>
+            <div class="divisions-grid">
+                <div class="division-card">
+                    <div class="division-tag">Division · Organizational</div>
+                    <h3 class="division-name">Decree Group</h3>
+                    <p class="division-body">Decree Group provides organizational governance architecture and decision enforcement infrastructure for businesses operating without clear authority structures. Engagements are designed to produce enforceable systems — not recommendations.</p>
+                    <div class="division-focus">
+                        <div class="focus-item">Governance Gap Analysis</div>
+                        <div class="focus-item">Decision Authority Mapping</div>
+                        <div class="focus-item">Operational Infrastructure</div>
+                        <div class="focus-item">Execution Enforcement</div>
+                    </div>
+                </div>
+                <div class="division-card">
+                    <div class="division-tag">Division · Individual</div>
+                    <h3 class="division-name">The Ferguson Group</h3>
+                    <p class="division-body">The Ferguson Group delivers individual decision authority systems, boundary enforcement frameworks, and personal operating infrastructure for principals and leaders who require structured operational sovereignty — not coaching. Built for individuals operating at the highest levels of personal and professional accountability.</p>
+                    <div class="division-focus">
+                        <div class="focus-item">Decision Authority Systems</div>
+                        <div class="focus-item">Boundary Enforcement Frameworks</div>
+                        <div class="focus-item">Personal Operating Infrastructure</div>
+                        <div class="focus-item">Principal Conduct Architecture</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section id="contact" class="contact">
+        <div class="section-inner">
+            <div class="contact-info">
+                <div class="section-label">Contact</div>
+                <h2 class="section-title">Begin a Conversation</h2>
+                <p>For partnership inquiries, service consultations, or strategic discussions — reach out to The Imara Group LLC directly.</p>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <span class="contact-detail-label">Location</span>
+                        <span class="contact-detail-value">9600 Two Notch Rd, Suite 5<br>Columbia, SC 29223</span>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-detail-label">Phone</span>
+                        <span class="contact-detail-value"><a href="tel:8338734800">833-873-4800</a></span>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-detail-label">Email</span>
+                        <span class="contact-detail-value"><a href="mailto:info@theimaragroupllc.com">info@theimaragroupllc.com</a></span>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-detail-label">Web</span>
+                        <span class="contact-detail-value"><a href="https://www.theimaragroupllc.com" target="_blank">www.theimaragroupllc.com</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" action="https://formsubmit.co/info@theimaragroupllc.com" method="POST">
+                <input type="hidden" name="_subject" value="New Inquiry — The Imara Group LLC">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://www.theimaragroupllc.com">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="organization">Organization</label>
+                        <input type="text" id="organization" name="organization" placeholder="Company name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry">Inquiry Type</label>
+                        <select id="inquiry" name="inquiry">
+                            <option value="" disabled selected>Select an area</option>
+                            <option value="governance">Governance Architecture</option>
+                            <option value="decision">Decision Infrastructure</option>
+                            <option value="operational">Operational Systems</option>
+                            <option value="decree">Decree Group</option>
+                            <option value="ferguson">The Ferguson Group</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Describe your situation and what you are looking to address..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-wordmark">The Imara Group LLC</div>
+            <div class="footer-tagline">Governance · Authority · D
